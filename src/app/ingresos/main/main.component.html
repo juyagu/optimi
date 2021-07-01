@@ -1,0 +1,41 @@
+<div *ngIf="ingresos">
+    <h1>Ingresos</h1>
+    <table class="table hover table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>Nº Ingreso</th>
+                <th>Estado</th>
+                <th>Nombre</th>
+                <th>Fecha de Alta</th>
+                <th>Nº Documento</th>
+                <th>Sexo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ingreso of ingresos">
+                <td>{{ingreso.idIngreso}}</td>
+                <td>{{ingreso.estadoNavigation.nombreEstado}}</td>
+                <td>{{ingreso.pacienteNavigation.nombreApellido}}</td>
+                <td>{{ingreso.fecha}}</td>
+                <td>{{ingreso.pacienteNavigation.nrodoc}}</td>
+                <td>{{ingreso.pacienteNavigation.sexo === 'M' ? 'Masculino' : 'Femenino'}}</td>
+                <td><button class="btn btn-primary" (click)="editarRegistro(ingreso.idIngreso)">Editar</button></td>
+            </tr>
+            <!--<tr>
+                <td><input type="text" class="form-control" value="1"></td>
+                <td><input type="text" class="form-control" value="Pedro Gonzalez"></td>
+                <td><select name="" id="" class="form-control">
+                        <option value="1">Ingresado</option>
+                        <option value="2">Egresado</option>
+                        <option value="3">Validado</option>
+                    </select></td>
+                <td><input type="text" class="form-control" value="2021-06-01 24:00:00"></td>
+                <td><button class="btn btn-primary" (click)="editarRegistro(1)">Editar</button></td>
+            </tr>-->
+        </tbody>
+    </table>
+</div>
+<!--<div *ngIf="pacienteElegido.idPaciente > 0">
+    <app-detalle [paciente]="pacienteElegido"></app-detalle>
+</div>-->

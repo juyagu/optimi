@@ -1,0 +1,28 @@
+<div id="detalle" style="margin-top: 30px;">
+    <h3>{{titulo}}</h3>
+    <form class="row g-3" (ngSubmit)="guardarIngreso()" #formularioIngreso=ngForm>
+       <!-- <div class="col-2">
+            <label for="" class="form-label">Id</label>
+            <input type="number" name="idIngreso" class="form-control" disabled [(ngModel)]="ingreso.idIngreso">
+        </div> -->
+        <div class="col-12">
+            <label for="" class="form-label">Nombre</label>
+            <input type="text" name="nombreApellido" class="form-control" placeholder="Nombre Completo" aria-label="Nombre Completo" [(ngModel)]="ingreso.paciente.nombreApellido" required minlength="10" #nombreApellido=ngModel>
+            <div *ngIf="nombreApellido.invalid && (nombreApellido.dirty || nombreApellido.touched)" class="alert" style="color: red;">
+                <div *ngIf="nombreApellido.errors?.required">
+                    Debe ingresar un nombre
+                </div>
+                <div *ngIf="nombreApellido.errors?.minlength">
+                    El nombre ingresado es muy corto
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <label for="" class="form-label">Nro Doc</label>
+            <input type="text" name="nro_doc" class="form-control" [(ngModel)]="ingreso.paciente.nrodoc">
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary" [disabled]="formularioIngreso.invalid">Aceptar</button>
+        </div>
+    </form>
+</div>
